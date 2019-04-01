@@ -1,5 +1,6 @@
 package de.complex;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -14,7 +15,7 @@ import java.util.Objects;
  */
 public class Complex {
     private static final Type _defaultType = Type.cartesian;
-    private static final boolean _defaultMutable = false;
+    private static final boolean _defaultMutable = true;
     private final Type _type;
     private final boolean _isMutable;
     private double _imag;
@@ -57,6 +58,14 @@ public class Complex {
         this._isMutable = mutable;
         this._real = real;
         this._imag = imag;
+    }
+
+    public Cartesian getCartesian() {
+        return new Cartesian(this._real, this._imag);
+    }
+
+    public Polar getPolar() {
+        return this.getCartesian().getPolar();
     }
 
     public Type getType() {
@@ -155,8 +164,12 @@ public class Complex {
         return this._applyChange(real, imag);
     }
 
-    public boolean equals(Complex other) {
-        return (this.getReal() == other.getReal()) && (this.getImag() == other.getImag());
+    @Contract(value = "null -> false", pure = true)
+    public boolean equals(Object other) {
+        if(other instanceof Complex) {
+            return (this.getReal() == ((Complex)other).getReal()) && (this.getImag() == ((Complex)other).getImag());
+        }
+        return false;
     }
 
     @Override

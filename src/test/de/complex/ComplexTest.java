@@ -386,4 +386,13 @@ class ComplexTest {
         assertEquals(expectedRadiant, MathUtils.angleRadiant(a), 0.1);
         assertEquals(expectedAlpha, MathUtils.angleDegree(a), 0.1);
     }
+
+    @Test
+    void toStringPolar() {
+        double expectedAlpha = 45.0;
+        double expectedAbs = 10.0;
+        Polar polar = new Polar(expectedAlpha, expectedAbs);
+        Complex complex = new Complex(polar);
+        assertEquals("absolute: " + expectedAbs + "; angle: " + expectedAlpha, complex.toString());
+    }
 }

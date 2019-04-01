@@ -1,5 +1,7 @@
 package de.complex;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * @author Roman Schmidt, Stanislav Brug
  * <p>
@@ -24,5 +26,27 @@ public class Cartesian {
 
     public Polar getPolar() {
         return MathUtils.getPolarFromCartesian(this);
+    }
+
+    @Contract(value = "null -> false", pure = true)
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Cartesian) {
+            return
+                    MathUtils.fuzzyEquals(this._imag, ((Cartesian) other)._imag, 0.1) &&
+                            MathUtils.fuzzyEquals(this._real, ((Cartesian) other)._real, 0.1)
+                    ;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("imag: ");
+        builder.append(this._imag);
+        builder.append("; real: ");
+        builder.append(this._real);
+        return builder.toString();
     }
 }

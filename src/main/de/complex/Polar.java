@@ -1,5 +1,7 @@
 package de.complex;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * @author Roman Schmidt, Stanislav Brug
  * <p>
@@ -24,5 +26,27 @@ public class Polar {
 
     public Cartesian getCartesian() {
         return MathUtils.getCartesianFromPolar(this);
+    }
+
+    @Contract(value = "null -> false", pure = true)
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Polar) {
+            return
+                    MathUtils.fuzzyEquals(this._abs, ((Polar) other)._abs, 0.1) &&
+                            MathUtils.fuzzyEquals(this._alpha, ((Polar) other)._alpha, 0.1)
+                    ;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("abs: ");
+        builder.append(this._abs);
+        builder.append("; alpha: ");
+        builder.append(this._alpha);
+        return builder.toString();
     }
 }

@@ -27,57 +27,36 @@ public abstract class MathUtils {
         return new Polar(MathUtils.angleDegree(complex), complex.getAbsolute());
     }
 
-    /**
-     * todo test
-     */
     @NotNull
     public static Complex exp(@NotNull Complex complex) {
         Cartesian cart = new Cartesian(Math.exp(complex.getReal()) * Math.cos(complex.getImag()), Math.exp(complex.getReal()) * Math.sin(complex.getImag()));
         return new Complex(cart, complex.getType());
     }
 
-    /**
-     * todo test
-     */
     @NotNull
     public static Complex sin(@NotNull Complex complex) {
         Cartesian cart = new Cartesian(Math.sin(complex.getReal()) * Math.cosh(complex.getImag()), Math.cos(complex.getReal()) * Math.sinh(complex.getImag()));
         return new Complex(cart, complex.getType());
     }
 
-    /**
-     * todo test
-     */
     @NotNull
     public static Complex cos(@NotNull Complex complex) {
         Cartesian cart = new Cartesian(Math.cos(complex.getReal()) * Math.cosh(complex.getImag()), -Math.sin(complex.getReal()) * Math.sinh(complex.getImag()));
         return new Complex(cart, complex.getType());
     }
 
-    /**
-     * todo test
-     */
     public static Complex tan(Complex complex) {
         return MathUtils.sin(complex).divides(MathUtils.cos(complex));
     }
 
-    /**
-     * todo test
-     */
     public static double angleRadiant(@NotNull Complex complex) {
         return Math.atan(complex.getImag() / complex.getReal());
     }
 
-    /**
-     * todo test
-     */
     public static double angleDegree(Complex complex) {
         return MathUtils.angleRadiant(complex) * (180 / Math.PI);
     }
 
-    /**
-     * todo test
-     */
     @NotNull
     public static Complex reciprocal(@NotNull Complex complex) {
         double scale = complex.getReal() * complex.getReal() + complex.getImag() * complex.getImag();
@@ -86,9 +65,15 @@ public abstract class MathUtils {
     }
 
     /**
-     * todo test
+     * source: https://google.github.io/guava/releases/17.0/api/docs/com/google/common/math/DoubleMath.html
      */
-    public double phase(Complex complex) {
+    public static boolean fuzzyEquals(double a, double b, double tolerance) {
+        return Math.copySign(a - b, 1.0) <= Math.abs(tolerance)
+                || (a == b) // needed to ensure that infinities equal themselves
+                || (Double.isNaN(a) && Double.isNaN(b));
+    }
+
+    public static double phase(@NotNull Complex complex) {
         return Math.atan2(complex.getImag(), complex.getReal());
     }
 }
