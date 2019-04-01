@@ -1,0 +1,181 @@
+package de.complex;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+/**
+ * @author Roman Schmidt, Stanislav Brug
+ * <p>
+ * This class holds the main logic for the calculation with Complex numbers.
+ * It uses the MathUtils to
+ * <p>
+ * inspired by: https://introcs.cs.princeton.edu/java/32class/Complex.java.html
+ */
+public class Complex {
+    private static final Type _defaultType = Type.cartesian;
+    private static final boolean _defaultMutable = false;
+    private final Type _type;
+    private final boolean _isMutable;
+    private double _imag;
+    private double _real;
+
+    public Complex(@NotNull Cartesian cartesian) {
+        this(cartesian.getReal(), cartesian.getImag(), Type.cartesian, Complex._defaultMutable);
+    }
+
+    public Complex(@NotNull Polar polar) {
+        this(polar.getCartesian(), Type.polar, Complex._defaultMutable);
+    }
+
+    public Complex(@NotNull Polar polar, boolean mutable) {
+        this(polar.getCartesian(), Type.polar, mutable);
+    }
+
+    public Complex(@NotNull Cartesian cartesian, boolean mutable) {
+        this(cartesian.getReal(), cartesian.getImag(), Type.cartesian, mutable);
+    }
+
+    public Complex(@NotNull Cartesian cart, Type type, boolean mutable) {
+        this(cart.getReal(), cart.getImag(), type, mutable);
+    }
+
+    public Complex(@NotNull Polar polar, Type type, boolean mutable) {
+        this(polar.getCartesian(), type, mutable);
+    }
+
+    public  Complex(@NotNull Cartesian cart, Type type) {
+        this(cart.getReal(), cart.getImag(), type, Complex._defaultMutable);
+    }
+
+    public  Complex(@NotNull Polar polar, Type type) {
+        this(polar.getCartesian(), type, Complex._defaultMutable);
+    }
+
+    private Complex(double real, double imag, Type type, boolean mutable) {
+        this._type = type;
+        this._isMutable = mutable;
+        this._real = real;
+        this._imag = imag;
+    }
+
+    public Type getType() {
+        return this._type;
+    }
+
+    private Complex _applyChange(double real, double imag) {
+        if (this._isMutable) {
+            this._real = real;
+            this._imag = imag;
+            return this;
+        }
+        return new Complex(new Cartesian(real, imag), this._type, false);
+    }
+
+    @Override
+    public Complex clone() {
+        return this._applyChange(this._real, this._imag);
+    }
+
+    public double getImag() {
+        return this._imag;
+    }
+
+    public double getReal() {
+        return this._real;
+    }
+
+    @Override
+    public String toString() {
+        return this.toString(this._type);
+    }
+
+    public String toString(Type type) {
+        return type == Type.cartesian ? this._toStringCartesian() : this._toStringPolar();
+    }
+
+    @NotNull
+    private String _toStringCartesian() {
+        StringBuilder builder = new StringBuilder();
+
+        if (this.getImag() == 0) {
+            builder.append(this.getReal());
+        } else if (this.getReal() == 0) {
+            builder.append(this.getImag());
+            builder.append("i");
+        } else if (this.getImag() < 0) {
+            builder.append(this.getReal());
+            builder.append(" - ");
+            builder.append(-this.getImag());
+            builder.append("i");
+        } else {
+            builder.append(this.getReal());
+            builder.append(" + ");
+            builder.append(this.getImag());
+            builder.append("i");
+        }
+        return builder.toString();
+    }
+
+    @NotNull
+    private String _toStringPolar() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("absolute: ");
+        builder.append(this.getAbsolute());
+        builder.append("; angle: ");
+        builder.append(MathUtils.angleDegree(this));
+
+        return builder.toString();
+    }
+
+    public Complex plus(Complex otherAComplex) {
+        double real = this.getReal() + otherAComplex.getReal();
+        double imag = this.getImag() + otherAComplex.getImag();
+        return this._applyChange(real, imag);
+    }
+
+    public Complex minus(Complex otherAComplex) {
+        double real = this.getReal() - otherAComplex.getReal();
+        double imag = this.getImag() - otherAComplex.getImag();
+        return this._applyChange(real, imag);
+    }
+
+    /**
+     * make sure the other complex will not be changed any way.
+     * multiply after reciprocal the other complex;
+     */
+    public Complex divides(Complex otherAComplex) {
+        return this.multiply(MathUtils.reciprocal(otherAComplex));
+    }
+
+    public Complex multiply(Complex otherAComplex) {
+        double real = this.getReal() * otherAComplex.getReal() - this.getImag() * otherAComplex.getImag();
+        double imag = this.getReal() * otherAComplex.getImag() + this.getImag() * otherAComplex.getReal();
+        return this._applyChange(real, imag);
+    }
+
+    public boolean equals(Complex other) {
+        return (this.getReal() == other.getReal()) && (this.getImag() == other.getImag());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getReal(), this.getImag());
+    }
+
+    public double getAbsolute() {
+        return Math.hypot(this.getReal(), this.getImag());
+    }
+
+    public Complex scale(double alpha) {
+        return this._applyChange(alpha * this.getReal(), alpha * this.getImag());
+    }
+
+    /**
+     * invert imag
+     */
+    public Complex conjugate() {
+        return this._applyChange(this.getReal(), -this.getImag());
+    }
+}
