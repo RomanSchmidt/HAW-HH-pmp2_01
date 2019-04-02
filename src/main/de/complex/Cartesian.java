@@ -29,8 +29,10 @@ public class Cartesian {
     }
 
     @Contract(value = "null -> false", pure = true)
-    @Override
     public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
         if (other instanceof Cartesian) {
             return
                     MathUtils.fuzzyEquals(this._imag, ((Cartesian) other)._imag, 0.1) &&

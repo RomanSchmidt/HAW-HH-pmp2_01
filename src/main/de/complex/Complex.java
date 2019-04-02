@@ -166,6 +166,9 @@ public class Complex {
 
     @Contract(value = "null -> false", pure = true)
     public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
         if(other instanceof Complex) {
             return (this.getReal() == ((Complex)other).getReal()) && (this.getImag() == ((Complex)other).getImag());
         }

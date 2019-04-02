@@ -31,6 +31,9 @@ public class Polar {
     @Contract(value = "null -> false", pure = true)
     @Override
     public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
         if (other instanceof Polar) {
             return
                     MathUtils.fuzzyEquals(this._abs, ((Polar) other)._abs, 0.1) &&

@@ -3,8 +3,7 @@ package de.complex;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ComplexTest {
     private final double _aReal = 5.0;
@@ -57,10 +56,12 @@ class ComplexTest {
 
         if (mutable) {
             assertEquals(a, c);
+            assertSame(a, c);
             assertEquals(a.hashCode(), c.hashCode());
             assertEquals(ComplexTest._buildCartString(cReal, cImag), a.toString());
         } else {
             assertNotEquals(a, c);
+            assertNotSame(a, c);
             assertNotEquals(a.hashCode(), c.hashCode());
             assertEquals(ComplexTest._buildCartString(a.getReal(), a.getImag()), a.toString());
         }
