@@ -59,3 +59,11 @@ No change of the Object
 ### Types
 - cartesian
 - polar
+
+# cafebabe Task
+Long.toHexString(0x100000000L, 0xcafebabe)
+## Java
+Will return the same due to limit of Hex and turn around to it self.
+## Ruby
+This one seems to wrap in all dynamically to its own Int-Object which does theoretical
+have no limit so we will get 7700658878.
