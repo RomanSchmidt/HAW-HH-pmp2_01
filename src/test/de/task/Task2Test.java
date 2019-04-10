@@ -36,14 +36,18 @@ class Task2Test {
     private void _checkOrder(@NotNull BufferedReader fileHandler) throws IOException {
         String line = fileHandler.readLine();
         Complex prevC = null;
+        boolean found = false;
         while (line != null) {
+            assertTrue(line.trim().length() > 0);
             Complex currentC = Parser.parseRowToComplex(line);
             if (prevC != null) {
                 assertTrue(prevC.getAbsolute() <= currentC.getAbsolute());
             }
             prevC = currentC;
             line = fileHandler.readLine();
+            found = true;
         }
         fileHandler.close();
+        assertTrue(found);
     }
 }

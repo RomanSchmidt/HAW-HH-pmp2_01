@@ -59,7 +59,7 @@ public class Task2 {
     }
 
     private void _generateComplex() {
-        double x = -2.0;
+        double x = 0.0;
         double y = -2.0;
         double step = 0.004;
         int i = 0;
