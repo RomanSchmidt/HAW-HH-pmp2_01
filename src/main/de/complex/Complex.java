@@ -45,11 +45,11 @@ public class Complex {
         this(polar.getCartesian(), type, mutable);
     }
 
-    public  Complex(@NotNull Cartesian cart, Type type) {
+    public Complex(@NotNull Cartesian cart, Type type) {
         this(cart.getReal(), cart.getImag(), type, Complex._defaultMutable);
     }
 
-    public  Complex(@NotNull Polar polar, Type type) {
+    public Complex(@NotNull Polar polar, Type type) {
         this(polar.getCartesian(), type, Complex._defaultMutable);
     }
 
@@ -106,23 +106,17 @@ public class Complex {
     @NotNull
     private String _toStringCartesian() {
         StringBuilder builder = new StringBuilder();
+        String real = this.getReal() == 0 ? "0" : Double.toString(this.getReal());
+        String imag = this.getImag() == 0 ? "0" : Double.toString(Math.abs(this.getImag()));
 
-        if (this.getImag() == 0) {
-            builder.append(this.getReal());
-        } else if (this.getReal() == 0) {
-            builder.append(this.getImag());
-            builder.append("i");
-        } else if (this.getImag() < 0) {
-            builder.append(this.getReal());
-            builder.append(" - ");
-            builder.append(-this.getImag());
-            builder.append("i");
-        } else {
-            builder.append(this.getReal());
+        builder.append(real);
+        if (this.getImag() >= 0) {
             builder.append(" + ");
-            builder.append(this.getImag());
-            builder.append("i");
+        } else {
+            builder.append(" - ");
         }
+        builder.append(imag);
+        builder.append("i");
         return builder.toString();
     }
 
@@ -169,8 +163,8 @@ public class Complex {
         if (this == other) {
             return true;
         }
-        if(other instanceof Complex) {
-            return (this.getReal() == ((Complex)other).getReal()) && (this.getImag() == ((Complex)other).getImag());
+        if (other instanceof Complex) {
+            return (this.getReal() == ((Complex) other).getReal()) && (this.getImag() == ((Complex) other).getImag());
         }
         return false;
     }
