@@ -5,7 +5,7 @@ import de.complex.Complex;
 /**
  * @author Roman Schmidt, Stanislav Brug
  * <p>
- * Kopiert von der unten stehenden Quelle und leicht strukturell angepasst.
+ * Tooken code from source below and minimized to our needs.
  * <p>
  * source: https://introcs.cs.princeton.edu/java/32class/Mandelbrot.java.html
  */

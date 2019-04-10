@@ -11,6 +11,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * @author Roman Schmidt, Stanislav Brug
+ * <p>
+ * The class for the wole logic of Task2
+ * generate some complex, write them to file, read again, generate both litss and save ordered to files
+ */
 public class Task2 {
 
     private ArrayList<Complex> _complexList = new ArrayList<>();

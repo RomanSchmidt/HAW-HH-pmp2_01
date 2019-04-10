@@ -7,6 +7,11 @@ import org.jetbrains.annotations.NotNull;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * @author Roman Schmidt, Stanislav Brug
+ * <p>
+ * Central Utility Class to handle all file handlings
+ */
 abstract public class Manager {
     private static String _inFile = System.getProperty("user.dir") + "/src/resource/inFile.txt";
     private static String _juliaFile = System.getProperty("user.dir") + "/src/resource/juliaFile.txt";

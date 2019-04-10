@@ -4,6 +4,11 @@ import de.complex.Cartesian;
 import de.complex.Complex;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Roman Schmidt, Stanislav Brug
+ * <p>
+ * Just a Domain Cass for parseRowToComplex function
+ */
 public abstract class Parser {
     @NotNull
     public static Complex parseRowToComplex(@NotNull String row) {
