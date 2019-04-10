@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Task {
+public class Task2 {
 
     private ArrayList<Complex> _complexList = new ArrayList<>();
     private ArrayList<Complex> _mandelList = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Task {
         }
     };
 
-    private Task() throws IOException {
+    Task2() throws IOException {
         this._generateComplex();
         this._writeComplexToFile();
         this._complexList = Manager.getComplexListFromFile();
@@ -34,7 +34,7 @@ public class Task {
     }
 
     public static void main(String[] args) throws IOException {
-        new Task();
+        new Task2();
     }
 
     private void _writeMandelList() throws IOException {

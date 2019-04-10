@@ -2,10 +2,9 @@ package de.file;
 
 import de.complex.Cartesian;
 import de.complex.Complex;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-abstract class Parser {
+public abstract class Parser {
     @NotNull
     public static Complex parseRowToComplex(@NotNull String row) {
         String[] match = row.split(" ");

@@ -12,9 +12,19 @@ abstract public class Manager {
     private static String _juliaFile = System.getProperty("user.dir") + "/src/resource/juliaFile.txt";
     private static String _mandelFile = System.getProperty("user.dir") + "/src/resource/mandelFile.txt";
 
+    @Contract(pure = true)
+    public static String getMandlePath() {
+        return Manager._mandelFile;
+    }
+
+    @Contract(pure = true)
+    public static String getJuliaPath() {
+        return Manager._juliaFile;
+    }
+
     @NotNull
     @Contract("_ -> new")
-    private static BufferedReader getReadHandler(String filePath) throws FileNotFoundException {
+    public static BufferedReader getReadHandler(String filePath) throws FileNotFoundException {
         return new BufferedReader(new FileReader(filePath));
     }
 
