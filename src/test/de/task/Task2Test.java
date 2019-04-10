@@ -12,7 +12,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * Just the test if its been sorted before it was written to file, like requested
  */

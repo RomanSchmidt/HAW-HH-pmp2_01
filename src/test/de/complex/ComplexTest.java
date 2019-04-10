@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Stanislaw Brug, Roman Schmidt
+ */
 class ComplexTest {
     private final double _aReal = 5.0;
     private final double _aImag = 6.0;

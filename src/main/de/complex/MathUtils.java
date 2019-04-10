@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * Class for mathematical calculation of a complex class which should never force any changes to the Complex object
  */

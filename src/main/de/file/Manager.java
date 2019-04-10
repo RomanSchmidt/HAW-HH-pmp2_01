@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * Central Utility Class to handle all file handlings
  */

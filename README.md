@@ -5,7 +5,7 @@ PR08 die Javanisten
 Author: Roman Schmidt, Stanislaw Brug
 ```
 
-# Task1
+# Aufgabe 1.1
 ### Description
 ```
 Class Complex with two variations Mutable and Immutable.
@@ -63,9 +63,10 @@ No change of the Object
 - cartesian
 - polar
 
-# Subtasks
+# Aufgabe 1.2
 ## cafebabe Task
 Long.toHexString(0x100000000L, 0xcafebabe)
+# Aufgabe 1.4
 ### Java
 Will return the same due to limit of Hex and turn around to it self.
 ### Ruby
@@ -87,7 +88,6 @@ Mandel + Julia = Complex
 ### task
 The while set logic from task 2.
 
-##Subtasks
 ### Aufgabe 2.1
 Minuszahlen werden einen "Minusrest" zurück geben. Die richtige Berechnung wäre z.B. "!= 0".
 ### Aufgabe 2.2

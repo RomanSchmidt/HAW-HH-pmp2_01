@@ -5,7 +5,7 @@ import de.complex.Complex;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * Just a Domain Cass for parseRowToComplex function
  */

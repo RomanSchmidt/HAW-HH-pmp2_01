@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * This class holds the main logic for the calculation with Complex numbers.
  * It uses the MathUtils to

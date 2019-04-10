@@ -3,7 +3,7 @@ package de.complex;
 import org.jetbrains.annotations.Contract;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * Handle and scope the cartesian attributes and give convert method to polar
  */

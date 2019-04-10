@@ -3,7 +3,7 @@ package de.mandelbrot;
 import de.complex.Complex;
 
 /**
- * @author Roman Schmidt, Stanislav Brug
+ * @author Roman Schmidt, Stanislaw Brug
  * <p>
  * Tooken code from source below and minimized to our needs.
  * <p>
